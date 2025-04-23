@@ -15,16 +15,23 @@ const stages = [
 ]
 
 const modes = [
-  'Tower Control', 'Rainmaker', 'Clam Blitz', 'Splat Zones', 'Turf War'
+  'Tower Control', 'Rainmaker', 'Clam Blitz', 'Splat Zones'
 ]
 
 const combos = []
 
 stages.forEach(stage => {
   modes.forEach(mode => {
+    const img = stage.replaceAll(" ", "_")
     const combo = {}
     combo.stage = stage
     combo.mode = mode
+    if(stage !== "Mahi-Mahi Resort"){
+      combo.callout = `/${img}.png`
+    } else {
+      const imgMode = mode.replaceAll(" ", "_")
+      combo.callout = `/${img}_${imgMode}.png`
+    }
     combos.push(combo)
   })
 })
@@ -41,7 +48,7 @@ router.get("/", async (req, res) => {
 router.get('/seed', async (req, res)=>{
   try {
     await MapMode.create(combos)
-    res.redirect('/api/mapModes')
+    res.redirect('/api/mapmodes')
   } catch (error) {
     console.error(error)
   }

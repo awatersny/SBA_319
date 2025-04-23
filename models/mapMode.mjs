@@ -27,8 +27,9 @@ const mapModeSchema = new mongoose.Schema(
       enum: modes,
       required: true
     },
-    callouts: {
-      type: String
+    callout: {
+      type: String,
+      required: true
     }
   }
 )
