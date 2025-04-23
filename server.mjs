@@ -1,6 +1,7 @@
 import express from "express"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
+import mapModes from "./routes/mapModes.mjs"
 
 dotenv.config()
 const app = express()
@@ -12,8 +13,10 @@ app.use(express.json())
 mongoose.connect(`${process.env.ATLAS_URI}/SBA_319`)
 
 mongoose.connection.once("open", () => {
-  console.log(`Connected to ${mongoose.connection.name} database.`)
+  console.log(`Connected to the ${mongoose.connection.name} database.`)
 })
+
+app.use("/api/mapModes", mapModes)
 
 app.use("/", (req, res) => {
   res.send({message: "Welcome to the API"})

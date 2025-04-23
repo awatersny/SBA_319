@@ -12,10 +12,10 @@ const stages = [
 ]
 
 const modes = [
-  'Tower Control', 'Rainmaker', 'Clam Blitz', 'Splat Zones', 'Turf War'
+  'Tower Control', 'Rainmaker', 'Clam Blitz', 'Splat Zones'
 ]
 
-const comboSchema = new mongoose.Schema(
+const mapModeSchema = new mongoose.Schema(
   {
     stage: {
       type: String,
@@ -33,6 +33,6 @@ const comboSchema = new mongoose.Schema(
   }
 )
 
-const Combo = mongoose.model("Combo", comboSchema)
+const MapMode = mongoose.model("MapMode", mapModeSchema)
 
-export default Combo
+export default MapMode
