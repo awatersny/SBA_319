@@ -60,7 +60,7 @@ export async function addMemberTo(req, res) {
   try {
     const team = await Team.findById(req.params.id)
     const player = await Player.findById(req.body.id)
-    if(player.hasTeam === true) {
+    if(!player.hasTeam) {
       player.hasTeam = true
       player.save()
       team.players.push(player)
