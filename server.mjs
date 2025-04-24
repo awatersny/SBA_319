@@ -2,6 +2,8 @@ import express from "express"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
 import mapModes from "./routes/mapModes.mjs"
+import players from "./routes/players.mjs"
+import teams from "./routes/teams.mjs"
 
 dotenv.config()
 const app = express()
@@ -18,6 +20,8 @@ mongoose.connection.once("open", () => {
 })
 
 app.use("/api/mapmodes", mapModes)
+app.use("/api/players", players)
+app.use("/api/teams", teams)
 
 app.use("/", (req, res) => {
   res.send({message: "Welcome to the API"})
