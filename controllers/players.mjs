@@ -12,28 +12,31 @@ export async function getAllPlayers(req, res){
 
 export async function generatePlayers (req, res) {
   try {
-    await Player.create([
-      {
-        name: "Spice",
-        splash_tag: "1981",
-        role: "Slayer"
-      },
-      {
-        name: "ToriiStars",
-        splash_tag: "1123",
-        role: "Support"
-      },
-      {
-        name: "Sasu",
-        splash_tag: "1542",
-        role: "Anchor",
-      },
-      {
-        name: "Mobes",
-        splash_tag: "2478",
-        role: "Skirmisher"
-      }
-    ])
+    const players = await Player.find()
+    if(!players.length){
+      await Player.create([
+        {
+          name: "Spice",
+          splash_tag: "1981",
+          role: "Slayer"
+        },
+        {
+          name: "ToriiStars",
+          splash_tag: "1123",
+          role: "Support"
+        },
+        {
+          name: "Sasu",
+          splash_tag: "1542",
+          role: "Anchor",
+        },
+        {
+          name: "Mobes",
+          splash_tag: "2478",
+          role: "Skirmisher"
+        }
+      ])
+    }
     res.redirect('/api/players')
   } catch (error) {
     console.error(error)
