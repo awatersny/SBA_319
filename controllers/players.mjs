@@ -42,3 +42,12 @@ export async function generatePlayers (req, res) {
     console.error(error)
   }
 }
+
+export async function getPlayer(req, res){
+  try {
+    const player = await Player.findById(req.params.id)
+    res.status(200).json(player)
+  } catch (error) {
+    console.error(error)
+  }
+}
