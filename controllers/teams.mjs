@@ -1,5 +1,6 @@
 import Team from "../models/team.mjs"
 import Player from "../models/player.mjs"
+import { json } from "express"
 
 export async function getAllTeams(req, res){
   try {
@@ -11,11 +12,17 @@ export async function getAllTeams(req, res){
   }
 }
 
-export async function getAllPlayers(req, res){
+export async function createTeam(req, res) {
+  const teams = await Team.find()
   try {
-    const players = await Player.find()
-    if(players.length === 0) res.status(200).json({route: "players"})
-    else res.status(200).json(players)
+    if(!teams.find(team => team.name == req.body.name)) {
+      const team = await Team.create({
+        name: req.body.name,
+        members: []
+      })
+      res.json(team)
+    }
+    else res.json({msg: "Team name taken"})
   } catch (error) {
     console.error(error)
   }
@@ -50,11 +57,11 @@ export async function getTeam(req, res) {
 export async function getMembersOf(req, res) {
   try {
     const team = await Team.findById(req.params.id)
-    const members = []
-    for(let i = 0; i < team.players.length; i++) {
-      members.push(await Player.findById(team.players[i]))
-    } 
-    console.log(members)
+    const members = await Player.find({team: req.params.id})
+    // for(let i = 0; i < team.players.length; i++) {
+    //   members.push(await Player.findById(team.players[i]))
+    // } 
+    // console.log(await Player.find({team: req.params.id}))
     res.status(200).json(members)
   } catch (error) {
     console.error(error)
@@ -76,18 +83,20 @@ export async function addMemberTo(req, res) {
   } catch (error) {
     console.error(error)
   }
-}
+} 
 
 export async function removeMemberFrom(req, res) {
   try {
     const team = await Team.findById(req.params.id)
     const player = await Player.findById(req.params.playerId)
-    player.hasTeam = false
-    delete player.team
-    player.save()
     const idx = team.players.indexOf(player.id)
-    team.players.splice(idx, 1)
-    team.save()
+    if(idx > -1) {
+      player.hasTeam = false
+      player.team = null
+      player.save()
+      team.players.splice(idx, 1)
+      team.save()
+    }
     res.json(team)
   } catch (error) {
     console.error(error)

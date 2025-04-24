@@ -4,6 +4,7 @@ const router = express.Router()
 
 router.get("/", teamCtrl.getAllTeams)
 router.get("/seed", teamCtrl.generateTeam)
+router.post("/", teamCtrl.createTeam)
 router.get("/:id", teamCtrl.getTeam)
 router.get("/:id/members", teamCtrl.getMembersOf)
 router.patch("/:id/members", teamCtrl.addMemberTo)
