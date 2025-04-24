@@ -1,4 +1,5 @@
 import Team from "../models/team.mjs"
+import Player from "../models/player.mjs"
 
 export async function getAllTeams(req, res){
   try {
@@ -49,6 +50,7 @@ export async function getTeam(req, res) {
 export async function getMembersOf(req, res) {
   try {
     const team = await Team.findById(req.params.id)
+    res.status(200).json(team.players)
   } catch (error) {
     console.error(error)
   }
@@ -57,7 +59,14 @@ export async function getMembersOf(req, res) {
 export async function addMemberTo(req, res) {
   try {
     const team = await Team.findById(req.params.id)
-
+    const player = await Player.findById(req.body.id)
+    if(player.hasTeam === true) {
+      player.hasTeam = true
+      player.save()
+      team.players.push(player)
+      team.save()
+    }
+    res.json(team)
   } catch (error) {
     console.error(error)
   }
