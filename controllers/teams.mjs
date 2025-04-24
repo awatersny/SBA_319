@@ -1,5 +1,4 @@
-import Team from "../models/team.mjs";
-import Player from "../models/team.mjs"
+import Team from "../models/team.mjs"
 
 export async function getAllTeams(req, res){
   try {
@@ -11,39 +10,54 @@ export async function getAllTeams(req, res){
   }
 }
 
-export async function generateTeams (req, res) {
+export async function getAllPlayers(req, res){
+  try {
+    const players = await Player.find()
+    if(players.length === 0) res.status(200).json({route: "players"})
+    else res.status(200).json(players)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function generateTeam(req, res) {
   try {
     const teams = await Team.find()
     if(!teams.length){
       await Team.create([
         {
           name: "Spicy Kensa Alliance",
-          members: [
-            {
-              name: "Spice",
-              splash_tag: "1981",
-              role: "Slayer"
-            },
-            {
-              name: "ToriiStars",
-              splash_tag: "1123",
-              role: "Support"
-            },
-            {
-              name: "Sasu",
-              splash_tag: "1542",
-              role: "Anchor",
-            },
-            {
-              name: "Mobes",
-              splash_tag: "2478",
-              role: "Skirmisher"
-            }
-          ]
+          members: []
         }
       ])
     }
     res.redirect('/api/teams')
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function getTeam(req, res) {
+  try {
+    const team = await Team.findById(req.params.id)
+    res.status(200).json(team)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function getMembersOf(req, res) {
+  try {
+    const team = await Team.findById(req.params.id)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function addMemberTo(req, res) {
+  try {
+    const team = await Team.findById(req.params.id)
+
   } catch (error) {
     console.error(error)
   }
