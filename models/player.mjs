@@ -15,8 +15,14 @@ const playerSchema = new mongoose.Schema(
       enum: ["Slayer", "Skirmisher", "Support", "Anchor"],
       required: true
     },
-    sendou_profile: {
-      type: String
+    hasTeam: {
+      type: Boolean,
+      default: false,
+      required: true
+    },
+    team: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Team"
     }
   }
 )

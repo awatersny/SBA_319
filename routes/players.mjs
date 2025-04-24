@@ -1,8 +1,9 @@
 import express from "express"
+import * as playerCtrl from "../controllers/players.mjs"
 const router = express.Router()
 
-router.get("/", (req, res) => {
-  res.send({route: "players"})
-})
+router.get("/", playerCtrl.getAllPlayers)
+router.get("/seed", playerCtrl.generatePlayers)
+router.get("/:id", playerCtrl.getPlayer)
 
 export default router

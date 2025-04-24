@@ -1,5 +1,4 @@
 import mongoose from "mongoose"
-import Player from "./player.mjs"
 
 const teamSchema = new mongoose.Schema(
   {
@@ -8,12 +7,10 @@ const teamSchema = new mongoose.Schema(
       required: true
     },
     players: [{
-      type: Player,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Player",
       required: true
-    }],
-    sendou_profile: {
-      type: String
-    }
+    }]
   }
 )
 
