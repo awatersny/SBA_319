@@ -34,6 +34,11 @@ export async function generatePlayers (req, res) {
           name: "Mobes",
           splash_tag: "2478",
           role: "Skirmisher"
+        },
+        {
+          name: "DeepEnd",
+          splash_tag: "1157",
+          role: "Skirmisher"
         }
       ])
     }
@@ -50,7 +55,7 @@ export async function createNewPlayer(req, res) {
       res.json({msg: "Name should be no more than 10 characters long."})
     } 
     else if(req.body.splash_tag.length > 5) {
-      res.json({msg: "Name should be no more than 5 characters long."})
+      res.json({msg: "Splash tag should be no more than 5 characters long."})
     }
     else if(!players.find(player => player.splash_tag == req.body.splash_tag)) {
       const player = await Player.create({
@@ -69,7 +74,7 @@ export async function createNewPlayer(req, res) {
 export async function removePlayer(req, res) {
   try {
     await Player.findByIdAndDelete(req.params.id)
-    res.redirect('/api/players')
+    res.json({deleted: `Player Id ${req.params.id}`})
   } catch (error) {
     console.error(error)
   }
@@ -82,4 +87,4 @@ export async function getPlayer(req, res){
   } catch (error) {
     console.error(error)
   }
-}
+} 
