@@ -39,7 +39,7 @@ export async function removeTeam(req, res) {
       member.save()
     })
     await Team.findByIdAndDelete(req.params.id)
-    res.json(members)
+    res.json([{deleted: `Player Id ${req.params.id}`}, {membersAffected: members}])
   } catch (error) {
     console.error(error)
   }

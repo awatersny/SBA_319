@@ -61,9 +61,40 @@ export async function createNewPlayer(req, res) {
       const player = await Player.create({
         name: req.body.name,
         splash_tag: req.body.splash_tag,
-        role: req.body.role
+        role: req.body.role,
+        hasTeam: false,
+        team: null
       })
       res.json(player)
+    }
+    else res.json({msg: "Splash tag in use"})
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+// I don't want users override the hasTeam and team properites
+export async function editPlayer(req, res) {
+  try {
+    const players = await Player.find()
+    const thisPlayer = await Player.findById(req.params.id)
+    if(!players.find(player => player.splash_tag == req.body.splash_tag) 
+      || thisPlayer.splash_tag == req.body.splash_tag) {
+      if(req.body.name) {
+        if(req.body.name.length > 10) {
+          res.json({msg: "Name should be no more than 10 characters long."})
+        }
+        else thisPlayer.name = req.body.name
+      }
+      if(req.body.splash_tag) {
+        if(req.body.splash_tag.length > 5) {
+          res.json({msg: "Splash tag should be no more than 5 characters long."})
+        }
+        else thisPlayer.splash_tag = req.body.splash_tag
+      }
+      thisPlayer.role = req.body.role ? req.body.role : thisPlayer.role
+      thisPlayer.save()
+      res.json(thisPlayer)
     }
     else res.json({msg: "Splash tag in use"})
   } catch (error) {
