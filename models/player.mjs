@@ -18,12 +18,12 @@ const playerSchema = new mongoose.Schema(
     },
     hasTeam: {
       type: Boolean,
-      default: false,
-      required: true
+      default: false
     },
     team: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Team"
+      ref: "Team",
+      default: null
     }
   }
 )
