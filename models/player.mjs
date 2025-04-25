@@ -8,7 +8,8 @@ const playerSchema = new mongoose.Schema(
     },
     splash_tag: {
       type: String,
-      required: true
+      required: true,
+      unique: true
     },
     role: {
       type: String,
@@ -26,7 +27,6 @@ const playerSchema = new mongoose.Schema(
     }
   }
 )
-
 const Player = mongoose.model("Player", playerSchema)
 
 export default Player
