@@ -1,6 +1,5 @@
 import Team from "../models/team.mjs"
 import Player from "../models/player.mjs"
-import { json } from "express"
 
 export async function getAllTeams(req, res){
   try {
@@ -15,7 +14,10 @@ export async function getAllTeams(req, res){
 export async function createTeam(req, res) {
   const teams = await Team.find()
   try {
-    if(!teams.find(team => team.name == req.body.name)) {
+    if(req.body.name.length > 20) {
+      res.json({msg: "Name should be no more than 20 characters"})
+    }
+    else if(!teams.find(team => team.name == req.body.name)) {
       const team = await Team.create({
         name: req.body.name,
         members: []
@@ -28,7 +30,22 @@ export async function createTeam(req, res) {
   }
 }
 
-export async function generateTeam(req, res) {
+export async function removeTeam(req, res) {
+  try {
+    const members = await Player.find({team: req.params.id})
+    members.forEach(member => {
+      member.hasTeam = false
+      member.team = null
+      member.save()
+    })
+    await Team.findByIdAndDelete(req.params.id)
+    res.json(members)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function generateTeams(req, res) {
   try {
     const teams = await Team.find()
     if(!teams.length){
