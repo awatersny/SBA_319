@@ -6,9 +6,10 @@ router.get("/", teamCtrl.getAllTeams)
 router.get("/seed", teamCtrl.generateTeams)
 router.post("/", teamCtrl.createTeam)
 router.get("/:id", teamCtrl.getTeam)
+router.patch("/:id", teamCtrl.updateTeamName)
 router.delete("/:id", teamCtrl.removeTeam)
 router.get("/:id/members", teamCtrl.getMembersOf)
-router.patch("/:id/members", teamCtrl.addMemberTo)
+router.post("/:id/members", teamCtrl.addMemberTo)
 router.delete("/:id/members/:playerId", teamCtrl.removeMemberFrom)
 
 export default router

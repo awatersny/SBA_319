@@ -42,6 +42,15 @@ export async function getAllMapModes (req, res){
   }
 }
 
+export async function getMapMode (req, res){
+  try {
+    const mapMode = await MapMode.findById(req.params.id)
+    res.json(mapMode)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export async function generateMapModes (req, res) {
   try {
     await MapMode.create(combos)

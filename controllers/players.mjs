@@ -75,6 +75,7 @@ export async function generatePlayers (req, res) {
 
 export async function createNewPlayer(req, res) {
   try {
+    console.log(req.body)
     const players = await Player.find()
     if(req.body.name.length > 10) {
       res.json({msg: "Name should be no more than 10 characters long."})

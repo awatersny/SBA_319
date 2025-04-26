@@ -14,4 +14,16 @@ router.get("/", async (req, res) => {
   }
 })
 
+router.get("/:id", async (req, res) => {
+  try {
+    const mapMode = await MapMode.findById(req.params.id)
+    const options = {
+      mapModes: [mapMode]
+    }
+    res.render("info", options)
+  } catch (error) {
+    console.error(error)
+  }
+})
+
 export default router

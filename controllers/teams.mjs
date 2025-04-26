@@ -1,5 +1,6 @@
 import Team from "../models/team.mjs"
 import Player from "../models/player.mjs"
+import e from "express"
 
 export async function getAllTeams(req, res){
   try {
@@ -12,8 +13,8 @@ export async function getAllTeams(req, res){
 }
 
 export async function createTeam(req, res) {
-  const teams = await Team.find()
   try {
+    const teams = await Team.find()
     if(req.body.name.length > 20) {
       res.json({msg: "Name should be no more than 20 characters"})
     }
@@ -96,6 +97,24 @@ export async function getMembersOf(req, res) {
     // } 
     // console.log(await Player.find({team: req.params.id}))
     res.status(200).json(members)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function updateTeamName(req, res) {
+  try {
+    const teams = await Team.find()
+    const team = await Team.findById(req.params.id)
+    if(req.body.name.length > 20) {
+      res.json({msg: "Name should be no more than 20 characters"})
+    }
+    else if(!teams.find(t => t.name == req.body.name)) {
+      team.name = req.body.name ? req.body.name : team.name
+      team.save()
+      res.json(team)
+    }
+    else res.json({msg: "Team name taken"})
   } catch (error) {
     console.error(error)
   }
