@@ -6,14 +6,14 @@ const playerSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    splash_tag: {
+    splashTag: {
       type: String,
       required: true,
       unique: true
     },
     role: {
       type: String,
-      enum: ["Slayer", "Skirmisher", "Support", "Anchor"],
+      enum: ["slayer", "skirmisher", "support", "anchor", "frontline", "midline"],
       required: true
     },
     hasTeam: {

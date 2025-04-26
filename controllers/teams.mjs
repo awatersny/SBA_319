@@ -53,6 +53,22 @@ export async function generateTeams(req, res) {
         {
           name: "Spicy Kensa Alliance",
           members: []
+        },
+        {
+          name: "Last Resort",
+          members: []
+        },
+        {
+          name: "Alliance Rogue",
+          members: []
+        },
+        {
+          name: "Starburst",
+          members: []
+        },
+        {
+          name: "Fuego Calamari",
+          members: []
         }
       ])
     }

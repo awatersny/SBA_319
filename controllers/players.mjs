@@ -17,28 +17,53 @@ export async function generatePlayers (req, res) {
       await Player.create([
         {
           name: "Spice",
-          splash_tag: "1981",
-          role: "Slayer"
+          splashTag: "1981",
+          role: "frontline"
         },
         {
           name: "ToriiStars",
-          splash_tag: "1123",
-          role: "Support"
+          splashTag: "1123",
+          role: "midline"
         },
         {
           name: "Sasu",
-          splash_tag: "1542",
-          role: "Anchor",
+          splashTag: "1542",
+          role: "anchor",
         },
         {
           name: "Mobes",
-          splash_tag: "2478",
-          role: "Skirmisher"
+          splashTag: "2478",
+          role: "support"
         },
         {
           name: "DeepEnd",
-          splash_tag: "1157",
-          role: "Skirmisher"
+          splashTag: "1157",
+          role: "frontline"
+        },
+        {
+          name: "Vipman21",
+          splashTag: "3189",
+          role: "slayer"
+        },
+        {
+          name: "Vicvillon",
+          splashTag: "1493",
+          role: "slayer"
+        },
+        {
+          name: "CoZ.zy",
+          splashTag: "2169",
+          role: "frontline"
+        },
+        {
+          name: "Grey",
+          splashTag: "7111",
+          role: "support"
+        },
+        {
+          name: "Red",
+          splashTag: "9771",
+          role: "midline"
         }
       ])
     }
@@ -54,13 +79,13 @@ export async function createNewPlayer(req, res) {
     if(req.body.name.length > 10) {
       res.json({msg: "Name should be no more than 10 characters long."})
     } 
-    else if(req.body.splash_tag.length > 5) {
+    else if(req.body.splashTag.length > 5) {
       res.json({msg: "Splash tag should be no more than 5 characters long."})
     }
-    else if(!players.find(player => player.splash_tag == req.body.splash_tag)) {
+    else if(!players.find(player => player.splashTag == req.body.splashTag)) {
       const player = await Player.create({
         name: req.body.name,
-        splash_tag: req.body.splash_tag,
+        splashTag: req.body.splashTag,
         role: req.body.role,
         hasTeam: false,
         team: null
@@ -73,24 +98,24 @@ export async function createNewPlayer(req, res) {
   }
 }
 
-// I don't want users override the hasTeam and team properites
+// I don't want users to override the hasTeam and team properites
 export async function editPlayer(req, res) {
   try {
     const players = await Player.find()
     const thisPlayer = await Player.findById(req.params.id)
-    if(!players.find(player => player.splash_tag == req.body.splash_tag) 
-      || thisPlayer.splash_tag == req.body.splash_tag) {
+    if(!players.find(player => player.splashTag == req.body.splashTag) 
+      || thisPlayer.splashTag == req.body.splashTag) {
       if(req.body.name) {
         if(req.body.name.length > 10) {
           res.json({msg: "Name should be no more than 10 characters long."})
         }
         else thisPlayer.name = req.body.name
       }
-      if(req.body.splash_tag) {
-        if(req.body.splash_tag.length > 5) {
+      if(req.body.splashTag) {
+        if(req.body.splashTag.length > 5) {
           res.json({msg: "Splash tag should be no more than 5 characters long."})
         }
-        else thisPlayer.splash_tag = req.body.splash_tag
+        else thisPlayer.splashTag = req.body.splashTag
       }
       thisPlayer.role = req.body.role ? req.body.role : thisPlayer.role
       thisPlayer.save()
