@@ -9,7 +9,9 @@
   <div id="container">
     <% mapModes.forEach(mapMode => { %>
       <div class="info-box">
-        <h2><%= mapMode.stage %> <%= mapMode.mode %> Callouts </h2>
+        <a href="/callouts/<%= mapMode._id %>">
+          <h2><%= mapMode.stage %> <%= mapMode.mode %> Callouts </h2>
+        </a>
         <img 
           src="<%= mapMode.callout %>"
           alt=" <%= mapMode.stage %> <%= mapMode.mode %> Callouts "

@@ -5,7 +5,8 @@ router.get("/", (req, res) => {
   res.json({
     message: "Welcome to the API",
     calloutsRenderedAt: "/callouts",
-    links: [
+    renderedCalloutsById: "/callouts/:id",
+    apiLinks: [
       {
         href: "/api/players",
         rel: "players",

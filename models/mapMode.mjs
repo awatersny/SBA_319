@@ -6,7 +6,7 @@ const stages = [
   "Um'ami Ruins", "Museum d'Alfonsino", 'Crableg Capital',
   'Inkblot Art Academy', 'Eeltail Alley', 'Manta Maria',
   'Hammerhead Bridge', 'Sturgeon Shipyard', 'Undertow Spillway',
-  'Marlin Airport', 'Shipshape Cargo Co.', 'Mincemeat Metalworks',
+  'Marlin Airport', 'Shipshape Cargo Co', 'Mincemeat Metalworks',
   'Barnacle & Dime', 'Bluefin Depot', 'Mahi-Mahi Resort',
   'Wahoo World', 'Robo ROM-en', 'Lemuria Hub'
 ]
