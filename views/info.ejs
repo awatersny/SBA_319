@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Callouts</title>
+</head>
+<body>
+  <div id="container">
+    <% mapModes.forEach(mapMode => { %>
+      <div class="info-box">
+        <h2><%= mapMode.stage %> <%= mapMode.mode %> Callouts </h2>
+        <img 
+          src="<%= mapMode.callout %>"
+          alt=" <%= mapMode.stage %> <%= mapMode.mode %> Callouts "
+          width="1000px"
+        >
+      </div>
+    <% }); %>
+  </div>
+</body>
+</html>

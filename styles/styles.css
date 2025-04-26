@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 20pt;
+}
+
+input {
+  height: 30px;
+  width: 300px;
+  border-radius: 10px;
+  border: 5px solid orangered;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: indigo;
+  color: yellow;
+  text-align: center;
+  font-size: 50px;
+  padding: 30px 50px;
+  margin-bottom: 50px;
+  border-bottom: 5px solid orangered;
+  text-shadow: 10px 10px 11px black;
+}
+
+h1, h2, h3 {
+  margin: 0
+}
+
+h4 {
+  margin: 10px;
+}
+
+h5 {
+  margin: 0 0 10px 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+a, a:visited{
+  color: yellow;
+  text-decoration: none;
+  text-shadow: 10px 10px 11px black;
+}
+
+a:hover {
+  text-shadow: none;
+}
+
+.field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.err-msg {
+  color: orangered;
+}
+
+.checkbox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.delete-button button {
+  color: white;
+  background-color: red;
+}
+
+.info-link {
+  text-decoration: underline;
+}
+
+#container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#info-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 400px;
+  margin-top: 50px;
+}
+
+.info-box {
+  text-align: center;
+  padding: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 700px;
+  background-color: indigo;
+  color: yellow;
+  border-radius: 10px;
+  border: 5px solid orangered;
+  box-shadow: 10px 10px 11px #000000;
+}
+
+button {
+  height: 30px;
+  width: 60px;
+  color: indigo;
+  background-color: yellow;
+  border-radius: 10px;
+}
