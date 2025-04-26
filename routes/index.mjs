@@ -49,7 +49,7 @@ router.get("/", (req, res) => {
       },
       {
         href: "/api/teams/:id",
-        rel: "team",
+        rel: "team.name",
         type: "PATCH"
       },
       {
@@ -59,22 +59,22 @@ router.get("/", (req, res) => {
       },
       {
         href: "/api/teams/:id/members",
-        rel: "team",
+        rel: "team.players",
         type: "GET"
       },
       {
         href: "/api/teams/:id/members",
-        rel: "team",
+        rel: "team.players",
         type: "POST"
       },
       {
         href: "/api/teams/:id/members/:playerId",
-        rel: "team",
+        rel: "team.players",
         type: "GET"
       },
       {
         href: "/api/teams/:id/members/:playerId",
-        rel: "team",
+        rel: "team.players",
         type: "DELETE"
       },
       {
