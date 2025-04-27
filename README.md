@@ -7,7 +7,7 @@ An API that allows for full CRUD operations on players and competitive teams of 
 - **/callouts** - Renders a list of images showing callouts for each map/mode combination
 <br><br>
 
-- **/callouts/:id** - Renders an individual image showing callouts for the map/mode combination corresponding to the ":id" parameter
+- **/callouts/:id** - Renders an individual image showing callouts for the map/mode combination corresponding to the :id parameter
 <br><br>
 
 - **GET: /api/teams** - Endpoint showing all teams
@@ -63,10 +63,10 @@ An API that allows for full CRUD operations on players and competitive teams of 
   - "name": "Unique string max 20 chars"
 <br><br>
 
-- **DELETE: /api/players/:id** - Endpoint to delete the player specified by the id parameter
+- **DELETE: /api/players/:id** - Endpoint to delete the player specified by the :id parameter
 <br><br>
 
-- **DELETE: /api/teams/:id** - Endpoint to delete the team specified by the id parameter
+- **DELETE: /api/teams/:id** - Endpoint to delete the team specified by the :id parameter
 <br><br>
 
 - **DELETE: /api/teams/:id/members/:playerId** - Endpoint for removing the player with the id specified by the :playerId parameter from the existing team specified by the :id parameter
