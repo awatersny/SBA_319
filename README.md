@@ -1,5 +1,5 @@
 # Splatoon 3 Team Organizer API
-An API that allows full CRUD on splatoon players and competitive teams.  It also lists map/mode combinations and provides images of callouts by combination.
+An API that allows for full CRUD operations on players and competitive teams of the Nintendo Switch title "Splatoon 3".  It also lists map/mode combinations and provides images of callouts by combination.
 ## Routes
 - /api - HATEOAS Links
   
@@ -25,9 +25,9 @@ An API that allows full CRUD on splatoon players and competitive teams.  It also
 
 - POST: "/players"<br>
 req.body: {<br>
-  "name": "String max 10 chars",<br>
-  "splashTag": "String max 5 chars",<br>
-  "role": ["slayer", "skirmisher", "support", "anchor", "frontline", "midline"],<br>
+  - "name": "String max 10 chars",<br>
+  - "splashTag": "String max 5 chars",<br>
+  - "role": ["slayer", "skirmisher", "support", "anchor", "frontline", "midline"],<br>
 }
 
 - POST: "/teams"<br>
