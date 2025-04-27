@@ -1,7 +1,7 @@
 # Splatoon 3 Team Organizer API
 An API that allows for full CRUD operations on players and competitive teams of the Nintendo Switch title "Splatoon 3".  It also lists map/mode combinations and provides images of callouts by combination.
 ## Routes
-- /api - HATEOAS Links
+- **/api** - HATEOAS Links
 <br><br>
   
 - **/callouts** - Renders a list of images showing callouts for each map/mode combination
