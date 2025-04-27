@@ -24,21 +24,18 @@ An API that allows for full CRUD operations on players and competitive teams of 
 - GET: /api/mapmodes/:id - Endpoint showing tem map/mode combination that corresponds with the value in the :id parameter
 
 - POST: "/players"<br>
-req.body: {<br>
-  - "name": "String max 10 chars",<br>
-  - "splashTag": "String max 5 chars",<br>
-  - "role": ["slayer", "skirmisher", "support", "anchor", "frontline", "midline"],<br>
-}
+request body:
+  - "name": "String max 10 chars"
+  - "splashTag": "String max 5 chars"
+  - "role": ["slayer", "skirmisher", "support", "anchor", "frontline", "midline"]
 
 - POST: "/teams"<br>
-req.body: {<br>
-  "name": "Team name"<br>
-}
+request body:
+  - "name": "Team name"
 
 - POST: "/teams/:id/members"<br>
-req.body: {<br>
-  "player": "Player ObjectId"<br>
-}
+req.body: 
+  - "player": "Player ObjectId"
 
 - PUT: "/players/:id"
 
