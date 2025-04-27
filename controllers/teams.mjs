@@ -123,7 +123,7 @@ export async function updateTeamName(req, res) {
 export async function addMemberTo(req, res) {
   try {
     const team = await Team.findById(req.params.id)
-    const player = await Player.findById(req.body.id)
+    const player = await Player.findById(req.body.player)
     if(!player.hasTeam && team.players.length < 5) {
       player.hasTeam = true
       player.team = team._id
