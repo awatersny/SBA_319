@@ -10,7 +10,8 @@ An API that allows for full CRUD operations on players and competitive teams of 
 - **/callouts/:id** - Renders an individual image showing callouts for the map/mode combination corresponding to the :id parameter
 <br><br>
 
-- **GET: /api/teams** - Endpoint showing all teams
+- **GET: /api/teams** - Endpoint showing all teams<br>
+Append **/seed** to this route to add seed data
 <br><br>
 
 - **GET: /api/teams/:id** - Endpoint showing individual team corresponding to the :id parameter
@@ -22,13 +23,15 @@ An API that allows for full CRUD operations on players and competitive teams of 
 - **GET: /api/teams/:id/members/:playerId** - Endpoint showing a member of the specified team if their id corresponds with the value in the :playerId parameter
 <br><br>
 
-- **GET: /api/players** - Endpoint showing all players
+- **GET: /api/players** - Endpoint showing all players<br>
+Append **/seed** to this route to add seed data
 <br><br>
 
 - **GET: /api/players/:id** - Endpoint showing individual player corresponding to the :id parameter
 <br><br>
 
-- **GET: /api/mapmodes** - Endpoint showing all map/mode combinations
+- **GET: /api/mapmodes** - Endpoint showing all map/mode combinations<br>
+Append **/seed** to this route to add seed data
 <br><br>
 
 - **GET: /api/mapmodes/:id** - Endpoint showing tem map/mode combination that corresponds with the value in the :id parameter
